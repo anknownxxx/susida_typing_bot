@@ -54,7 +54,7 @@ CROP_BOTTOM_RATIO = 0.1  # 下側をこの割合分削る（皿の重なりが�
 OCR_POLL_INTERVAL = 0.2  # 何秒おきにOCRを試みるか
 
 # ---- タイピングの設定 ----
-TYPE_INTERVAL = 0.02    # 1文字ずつ送信する間隔(秒)。速すぎて入力が抜ける場合は上げる
+TYPE_INTERVAL = 0.01    # 1文字ずつ送信する間隔(秒)。速すぎて入力が抜ける場合は上げる
 
 # ---- 起動時の猶予 ----
 START_DELAY = 8  # ブラウザが開いてからコースを選んでスタートするまでの猶予秒数
@@ -87,7 +87,7 @@ def extract_romaji(img_array):
     raw_text = pytesseract.image_to_string(processed, config=config)
 
     tokens = raw_text.split()
-    cleaned_tokens = ["".join(re.findall(r"[a-zA-Z\-]+", t)).lower() for t in tokens]
+    cleaned_tokens = ["".join(re.findall(r"[a-zA-Z\-\,\?\!]+", t)).lower() for t in tokens]
     real_tokens = [t for t in cleaned_tokens if len(t) >= 2]
     return "".join(real_tokens)
 
