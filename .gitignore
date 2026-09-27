@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+
+# デバッグ・キャプチャ用の一時ファイル
+captures/
+debug/
+debug_auto/
+screen_full.png
